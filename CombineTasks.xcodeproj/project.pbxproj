@@ -19,6 +19,7 @@
 		442240E32BFBA130006ADF3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		442240E52BFBA131006ADF3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		442240E82BFBA131006ADF3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		442240EF2BFCA172006ADF3F /* less1.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = less1.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,7 @@
 				442240E32BFBA130006ADF3F /* ContentView.swift */,
 				442240E52BFBA131006ADF3F /* Assets.xcassets */,
 				442240E72BFBA131006ADF3F /* Preview Content */,
+				442240EF2BFCA172006ADF3F /* less1.playground */,
 			);
 			path = CombineTasks;
 			sourceTree = "<group>";
