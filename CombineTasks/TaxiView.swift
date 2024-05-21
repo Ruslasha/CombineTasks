@@ -1,4 +1,11 @@
 //
+//  TaxiView.swift
+//  CombineTasks
+//
+//  Created by Руслан Абрамов on 21.05.2024.
+//
+
+//
 //  ContentView.swift
 //  CombineTasks
 //
@@ -8,9 +15,9 @@
 import SwiftUI
 import Combine
 
-struct FirstCancellablePipelineView: View {
+struct TaxiView: View {
 
-    @StateObject var viewModel = FirstCancellablePipelineViewModel()
+    @StateObject var viewModel = TaxiViewModel()
 
 
     var body: some View {
@@ -28,30 +35,30 @@ struct FirstCancellablePipelineView: View {
                 Text("Отменить подписку")
                     .foregroundStyle(.white)
                     .padding(.horizontal)
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 20)
 
             }
             .background(.red)
             .cornerRadius(8)
-            .opacity(viewModel.status == "Запрос в банк..." ? 1.0 : 0.0)
+            .opacity(viewModel.status == "Ищем машину..." ? 1.0 : 0.0)
 
             Button {
                 viewModel.refresh()
             } label: {
-                Text("Запрос данных")
+                Text("Вызвать такси")
                     .foregroundStyle(.white)
                     .padding(.horizontal)
                     .padding(.vertical, 8)
 
             }
-            .background(.blue)
+            .background(.gray)
             .cornerRadius(8)
             .padding()
         }
     }
 }
 
-class FirstCancellablePipelineViewModel: ObservableObject {
+class TaxiViewModel: ObservableObject {
     @Published var data = ""
     @Published var status = ""
 
@@ -60,18 +67,18 @@ class FirstCancellablePipelineViewModel: ObservableObject {
     init() {
         cancallable = $data
             .map { [unowned self] value -> String in
-                status = "Запрос в банк..."
+                status = "Ищем машину..."
                 return value
             }
-            .delay(for: 5, scheduler: DispatchQueue.main)
+            .delay(for: 7, scheduler: DispatchQueue.main)
             .sink { [unowned self] value in
-                self.data = "Сумма всех счетов 1 млн."
-                self.status = "Данные получены"
+                self.data = "Водитель будет через 10 мин"
+                self.status = "Машина найдета"
             }
     }
 
     func refresh() {
-        data = "Перезапрос данных"
+        data = "Повторный вызов"
     }
 
     func cancel() {
@@ -82,5 +89,6 @@ class FirstCancellablePipelineViewModel: ObservableObject {
 }
 
 #Preview {
-    FirstCancellablePipelineView()
+    TaxiView()
 }
+
