@@ -8,15 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+    @StateObject var viewModel = TaskViewModel()
+       var body: some View {
+           VStack {
+               Form {
+                   Section() {
+                       List(viewModel.dataToView, id: \.self) { item in
+                           Text(item)
+                       }
+                   }
+               }
+               HStack {
+                   Button("Добавить фрукт") {
+                       viewModel.addFruit()
+                   }
+                   Button("Удалить фрукт") {
+                       viewModel.deleteLastFruct()
+                   }
+               }
+           }
+           .onAppear(){
+               viewModel.fetch()
+           }
+       }
 }
 
 #Preview {
